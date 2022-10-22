@@ -41,32 +41,35 @@ public class HwSpringBuyTicketsApplication {
 //a. Создать ивент из ДТО
         //  createEvent();
 //b. Создать пользователя
-      //   CustomerDto customerTest = createCustomer();
+        //   CustomerDto customerTest = createCustomer();
 
 //d. Поиск ближайших(будущих) ивентов
         List<EventDto> possibleEvent = eventService.getListPossibleEvent(new Date());
 
         if (possibleEvent.size() > 0) {
-            System.out.println("Possible true");
 //c. Поиск свободных билетов по ивенту.Из доступных первый в списке.
-            List<TicketDto> ticketsFree = getFreeTickets(possibleEvent.get(1));
-            if (ticketsFree.size() > 0) {
-                CustomerDto customerDto = customerService.getCustomerForEmail("maya@gmail.com");
-                if (customerDto != null) {
-                    // e. Присвоение билета пользователю
-                    ticketService.buyTicket(ticketsFree.get(0).getId(), customerDto);
-                    System.out.println("Maiia buy tickets");
+            var searchEvent = 0;
+            while (searchEvent < possibleEvent.size()) {
+                List<TicketDto> ticketsFree = getFreeTickets(possibleEvent.get(searchEvent));
+                if (ticketsFree.size() > 0) {
+                    CustomerDto customerDto = customerService.getCustomerForEmail("maya@gmail.com");
+                    if (customerDto != null) {
+                        // e. Присвоение билета пользователю
+                        ticketService.buyTicket(ticketsFree.get(0).getId(), customerDto);
+                        System.out.println("Maiia buy tickets");
+                        break;
+                    } else
+                        System.out.println("Bad purchase. customerDto = null");
 
-                }
-                else
-                System.out.println("Bad purchase. customerDto = null");
+                } else
+                    searchEvent++;
             }
-            else
-            System.out.println("Bad purchase. ticketsFree.size() =0");
+            if (searchEvent == possibleEvent.size()) {
+                System.out.println(" All tickets sold out. No upcoming events .");
+            }
 
-        }
-        else
-        System.out.println("Bad purchase. possibleEvent.size() = 0");
+        } else
+            System.out.println("Bad purchase. possibleEvent.size() = 0");
 
     }
 
