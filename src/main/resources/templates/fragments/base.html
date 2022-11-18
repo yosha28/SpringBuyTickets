@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      th:with="pathPrefix=${pathPrefix}"
+>
+<link th:href="@{/style/normalize.css}" rel="stylesheet">
+<link th:href="@{/style/maketMyStyles.css}" rel="stylesheet">
+<head>
+    <link rel="shortcut icon" href="https://logbook.itstep.org/favicon.ico?v=2">
+
+</head>
+<body>
+<header>
+    <nav th:insert="fragments/menu :: menu">
+
+    </nav>
+</header>
+<div class="main_menu_block">
+    <main>
+        <div layout:fragment="content"></div>
+    </main>
+</div>
+<footer>
+    <div class="wrapper">
+        <nav>
+            <div>
+                <a href="#"><span class="spanF1">Alivio</span></a>
+                <a href="#">Why Alivio</a>
+                <a href="#">Solution</a>
+                <a href="#">Community</a>
+                <a href="#">Pricing</a>
+            </div>
+        </nav>
+    </div>
+</footer>
+
+</body>
+</html>

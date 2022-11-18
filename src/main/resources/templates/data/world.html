@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.bluhbluh.com/"
+      layout:decorate="~{fragments/base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body layout:fragment="content" th:inline="text">
+<h1 th:text="${testMsg}"></h1>
+<h4 th:text="#{msg.test.welcome}"></h4>
+<div style="background-color: aquamarine" th:object="${event}">
+    <h3 th:text="*{getName()}"></h3>
+</div>
+<div style="background-color: aquamarine">
+    <ul th:each="event,iter:${events}">
+        <li th:text="${iter.count} +'.' + ${event.getName()}"></li>
+        <a>Look at [[${event.getName()}]]</a>
+    </ul>
+</div>
+</body>
+</html>
