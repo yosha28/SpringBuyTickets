@@ -60,12 +60,12 @@ public class EventService {
 
     }
 
- /*   @Transactional
+    @Transactional
     public List<EventDto> getFullList() {
         return eventRepository.findAll().stream()
                 .map(event -> modelMapper.map(event, EventDto.class))
                 .collect(Collectors.toList());
-    }*/
+    }
 
     public List<EventDto> getListPossibleEvent(Date date) {
         return eventRepository.getPossibleEvent(date).stream()
