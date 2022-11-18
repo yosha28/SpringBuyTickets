@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/"
+      layout:decorate="~{fragments/base}">
+<head>
+    <title>hello page</title>
+</head>
+<body layout:fragment="content" th:inline="text">
+<h1>Hello STATIC</h1>
+<h1 th:text="${testMsg}">Hello</h1>
+<h3 th:text="${time}">Hello</h3>
+<h3>Clock= [[${time}]].</h3>
+<h4 th:text="#{msg.test.welcome}">Hello</h4>
+
+<ul th:each="post,meta:${testPosts}">
+    <li>
+        <h4 th:if="${meta.odd}" style="color: red">post data: # [[${meta.count}]]</h4>
+        <h4 th:if="${meta.even}" style="color: green">post data: # [[${meta.count}]]</h4>
+        <p th:text="${post.title}"></p>
+        <hr th:if="${meta.last}"/>
+    </li>
+</ul>
+
+<a th:href="@{/world}">world page</a>
+
+<!--
+SpEL
+eq = equals
+ne = not equals
+gt = >
+lt = <
+ge = >=
+le = <=
+-->
+<div th:if="true" style="background-color: greenyellow; width: 200px; height: 100px">
+   <h1> THIS IS TRUE </h1>
+</div>
+
+<div th:unless="10 gt 100 " style="background-color: red; width: 200px; height: 100px">
+    <h1> THIS IS FALSE </h1>
+</div>
+
+
+<div th:switch="${status}">
+    <div style="background-color: #d8ad29; width: 100px; height: 100px" th:case="BAD">
+        <span>Плохиш</span>
+    </div>
+    <h1 th:case="GOOD">GOOD user</h1>
+    <h4 th:case="*"> ??? </h4>
+</div>
+
+</body>
+</html>
