@@ -28,19 +28,19 @@ header .div1{
 	background-image: url("../img/logo.png");
 }
 header .div2 {
-	width:27.85em;
+	width:41em;
 	height: 1.2em;
 	display: flex;
 	justify-content:space-between;
 }
-header .div3{	
-	width: 13em;
-	height: 1.2em;
-	display: flex;
-	justify-content: space-between;
-	align-items:center;
-	
-}
+/*!*header .div3{	*!*/
+/*!*	width: 13em;*!*/
+/*!*	height: 1.2em;*!*/
+/*!*	display: flex;*!*/
+/*!*	justify-content: space-between;*!*/
+/*!*	align-items:center;*!*/
+/*	*/
+/*}*/
 header a{
 	font-size: 1em;
 	font-family:Lato;

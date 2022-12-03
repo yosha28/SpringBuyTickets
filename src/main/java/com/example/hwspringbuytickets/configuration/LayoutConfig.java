@@ -1,4 +1,4 @@
-package com.example.hwspringbuytickets.config;
+package com.example.hwspringbuytickets.configuration;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;

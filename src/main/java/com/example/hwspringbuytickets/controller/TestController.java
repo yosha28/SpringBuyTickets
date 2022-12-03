@@ -49,13 +49,7 @@ public class TestController {
 
         return "data/world";
     }
-//    @GetMapping("world")
-//    public String worldPage(Model model) {
-//        model.addAttribute("testMsg", 10);
-//        var post = new Post("Hot news", "qwertyuio");
-//        model.addAttribute("post", post);
-//        return "data/world";
-//    }
+
 public void createEvent() /*throws java.text.ParseException*/ {
         List<TicketPackDto> tickets = new ArrayList<TicketPackDto>();
         tickets.add(TicketPackDto.builder().cost(100).count(1).build());
