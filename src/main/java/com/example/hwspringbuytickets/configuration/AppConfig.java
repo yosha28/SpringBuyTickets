@@ -1,4 +1,4 @@
-package com.example.hwspringbuytickets.config;
+package com.example.hwspringbuytickets.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
