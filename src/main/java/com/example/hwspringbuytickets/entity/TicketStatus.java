@@ -1,4 +1,4 @@
-package com.example.hwspringbuytickets.model;
+package com.example.hwspringbuytickets.entity;
 
 public enum TicketStatus {
     FREE,

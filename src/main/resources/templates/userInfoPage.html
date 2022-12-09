@@ -1,20 +1,21 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}">
 <head>
-  <title>Info</title>
+    <title>Info</title>
 </head>
 <body>
-<th:block th:include="/fragments/menuLogin"></th:block>
+<div class="divLogin" layout:fragment="content">
+    <th:block th:include="/fragments/menuLogin"></th:block>
+    <h2>Info Page</h2>
+    <h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+    <b>This is protected page!</b>
+    <a th:href="@{/}"><span class="button-trial">Ok</span></a>
+    <br/><br/>
 
-
-<h2>Info Page</h2>
-<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
-<b>This is protected page!</b>
-<a th:href="@{/}"><span class="button-trial">Ok</span></a>
-<br/><br/>
-
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
+    <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+</div>
 </body>
 
 </html>

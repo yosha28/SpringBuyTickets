@@ -8,6 +8,9 @@
   <a th:href="@{/userInfo}">Info</a>
 
   | &nbsp;
+  <a th:if="${#request.userPrincipal == null}" th:href="@{/registration}">Registration</a>
+
+  | &nbsp;
 
   <a th:href="@{/admin}">Admin</a>
 

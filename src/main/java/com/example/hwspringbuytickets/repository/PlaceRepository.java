@@ -1,7 +1,6 @@
 package com.example.hwspringbuytickets.repository;
 
-import com.example.hwspringbuytickets.model.Event;
-import com.example.hwspringbuytickets.model.Place;
+import com.example.hwspringbuytickets.entity.Place;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

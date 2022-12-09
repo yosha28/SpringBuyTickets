@@ -1,8 +1,5 @@
 package com.example.hwspringbuytickets;
 
-import com.example.hwspringbuytickets.dto.*;
-import com.example.hwspringbuytickets.model.Customer;
-import com.example.hwspringbuytickets.model.Ticket;
 import com.example.hwspringbuytickets.service.CustomerService;
 import com.example.hwspringbuytickets.service.EventService;
 import com.example.hwspringbuytickets.service.PlaceService;
@@ -11,12 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 
 @Slf4j
 @SpringBootApplication
@@ -30,10 +23,14 @@ public class HwSpringBuyTicketsApplication {
     @Autowired
     private TicketService ticketService;
 
+
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public static void main(String[] args) {
         SpringApplication.run(HwSpringBuyTicketsApplication.class, args);
+
+
+
     }
 
 //    @EventListener(ApplicationReadyEvent.class)

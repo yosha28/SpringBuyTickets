@@ -1,12 +1,8 @@
 package com.example.hwspringbuytickets.repository;
 
-import com.example.hwspringbuytickets.dto.CustomerDto;
-import com.example.hwspringbuytickets.dto.EventDto;
-import com.example.hwspringbuytickets.dto.TicketDto;
-import com.example.hwspringbuytickets.model.Customer;
-import com.example.hwspringbuytickets.model.Event;
-import com.example.hwspringbuytickets.model.Place;
-import com.example.hwspringbuytickets.model.Ticket;
+import com.example.hwspringbuytickets.entity.Customer;
+import com.example.hwspringbuytickets.entity.Event;
+import com.example.hwspringbuytickets.entity.Ticket;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

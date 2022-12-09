@@ -9,7 +9,12 @@ body {
 	margin: 0 auto;
 
 }
+.divLogin{
+	text-align: center;
+}
+form{
 
+}
  header nav{
  	height: 4.25em;
  	display: flex;

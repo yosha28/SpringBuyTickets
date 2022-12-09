@@ -1,13 +1,17 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}">
 <head>
   <title>Logout</title>
 </head>
 
 <body>
+<div layout:fragment="content">
 <th:block th:include="/fragments/menuLogin"></th:block>
 
 <h1>Logout Successful!</h1>
+</div>
 </body>
 
 </html>

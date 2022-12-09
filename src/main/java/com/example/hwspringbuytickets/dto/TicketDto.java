@@ -1,14 +1,10 @@
 package com.example.hwspringbuytickets.dto;
 
-import com.example.hwspringbuytickets.model.Customer;
-import com.example.hwspringbuytickets.model.Event;
-import com.example.hwspringbuytickets.model.TicketStatus;
-import lombok.AllArgsConstructor;
+import com.example.hwspringbuytickets.entity.TicketStatus;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 @Data
 @NoArgsConstructor
 

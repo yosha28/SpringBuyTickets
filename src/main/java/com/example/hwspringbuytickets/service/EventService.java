@@ -2,12 +2,9 @@ package com.example.hwspringbuytickets.service;
 
 import com.example.hwspringbuytickets.dto.EventCreationDto;
 import com.example.hwspringbuytickets.dto.EventDto;
-import com.example.hwspringbuytickets.dto.PlaceDto;
-import com.example.hwspringbuytickets.dto.TicketDto;
-import com.example.hwspringbuytickets.model.Event;
-import com.example.hwspringbuytickets.model.Place;
-import com.example.hwspringbuytickets.model.Ticket;
-import com.example.hwspringbuytickets.model.TicketStatus;
+import com.example.hwspringbuytickets.entity.Event;
+import com.example.hwspringbuytickets.entity.Place;
+import com.example.hwspringbuytickets.entity.Ticket;
 import com.example.hwspringbuytickets.repository.EventRepository;
 import com.example.hwspringbuytickets.repository.PlaceRepository;
 import com.example.hwspringbuytickets.repository.TicketRepository;
@@ -17,7 +14,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;

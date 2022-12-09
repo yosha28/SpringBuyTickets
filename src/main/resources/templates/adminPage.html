@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}">
 <head>
   <title th:utext="${title}"></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +9,9 @@
   <link th:href="@{/style/index.css}" rel="stylesheet">
 </head>
 <body>
-<th:block th:include="/fragments/menuLogin"></th:block>
+<div layout:fragment="content">
+<th:block th:include="./fragments/menuLogin"></th:block>
+
 
 <h2>Admin Page</h2>
 <h3>Welcome :
@@ -18,7 +22,7 @@
 <br/><br/>
 
 <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
+</div>
 </body>
 
 </html>

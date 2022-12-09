@@ -1,4 +1,4 @@
-set
-search_path = box;
-
-truncate table place;
+-- set
+-- search_path = box;
+--
+-- truncate table place;

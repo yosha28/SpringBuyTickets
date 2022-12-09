@@ -1,6 +1,5 @@
 package com.example.hwspringbuytickets.dto;
 
-import com.example.hwspringbuytickets.model.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +17,10 @@ public class CustomerDto {
     private String email;
 
     private String phone;
+
+    private String encrytedPassword;
+
+    private boolean enabled;
 
     private List<TicketDto> tickets;
 }

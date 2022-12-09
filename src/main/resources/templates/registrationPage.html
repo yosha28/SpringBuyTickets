@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}">
+<head>
+    <title>Registration</title>
+</head>
+<body>
+<div class="divLogin" layout:fragment="content">
+<!-- Include _menu.html -->
+<th:block th:include="/fragments/menuLogin"></th:block>
+
+<h1>Registration</h1>
+<!-- /login?error=true -->
+<!--<div th:if="${#request.getParameter('error') == 'true'}"-->
+<!--     style="color:red;margin:10px 0px;">-->
+<!--    Login Failed!!!<br />-->
+<!--    Reason :-->
+<!--    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"-->
+<!--          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">-->
+<!--                Static summary-->
+<!--         </span>-->
+
+<!--</div>-->
+
+
+<form name='f'  th:action="@{/saveRegistration}" th:object="${customer}"  method='POST'>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type='text' name='username'   th:field="*{name}" value=''></td>
+        </tr>
+        <tr>
+            <td>Mail:</td>
+            <td><input type='email' name='email' th:field="*{email}" /></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input type='phone' name='phone' th:field="*{phone}" /></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password' th:field="*{encrytedPassword}" /></td>
+        </tr>
+
+        <tr>
+            <td><input name="submit" type="submit" value="submit" /></td>
+        </tr>
+    </table>
+</form>
+
+<br>
+
+</div>
+</body>
+
+</html>
