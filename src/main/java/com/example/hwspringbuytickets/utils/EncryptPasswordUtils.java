@@ -12,12 +12,12 @@ public class EncryptPasswordUtils {
         return encoder.encode(password);
     }
 
-    // Отладчик для декодирования
-    public static void main(String[] args) {
-        String password = "qwerty";
-        String encrytedPassword = encrytePassword(password);
-
-        System.out.println("Encryted Password: " + encrytedPassword);
-    }
+//    // Отладчик для декодирования
+//    public static void main(String[] args) {
+//        String password = "qwerty";
+//        String encrytedPassword = encrytePassword(password);
+//
+//        System.out.println("Encryted Password: " + encrytedPassword);
+//    }
 
 }

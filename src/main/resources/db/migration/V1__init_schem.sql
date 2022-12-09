@@ -1,1 +1,1 @@
-create schema box;
+-- create schema box;

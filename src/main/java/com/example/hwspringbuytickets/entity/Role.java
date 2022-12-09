@@ -6,14 +6,15 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "role")
+@Table(schema="box")
 public class Role {
 
     @Id
-    @GeneratedValue
-    @Column(name = "role_id", nullable = false)
-    private Long roleId;
+    @GeneratedValue(generator = "box.role_generator", strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "role_generator_seq", sequenceName = "box.role_generator")
+    @Column
+    private Long id;
 
-    @Column(name = "role_name", unique=true, length = 30, nullable = false)
+    @Column(unique=true, length = 30, nullable = false)
     private String roleName;
 }

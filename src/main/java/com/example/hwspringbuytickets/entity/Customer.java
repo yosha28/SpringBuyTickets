@@ -1,6 +1,5 @@
-package com.example.hwspringbuytickets.model;
+package com.example.hwspringbuytickets.entity;
 
-import com.example.hwspringbuytickets.dto.TicketDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +20,12 @@ public class Customer {
     private String email;
     @Column
     private String phone;
+
+    @Column(length = 128, nullable = false)
+    private String encrytedPassword;
+
+    @Column(length = 1, nullable = false)
+    private boolean enabled;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Ticket> tickets;

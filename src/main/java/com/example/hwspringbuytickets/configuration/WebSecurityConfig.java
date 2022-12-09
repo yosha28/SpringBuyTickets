@@ -1,6 +1,7 @@
-package com.example.hwspringbuytickets.controller;
+package com.example.hwspringbuytickets.configuration;
 
-import com.example.hwspringbuytickets.service.UserDetailsServiceImpl;
+import com.example.hwspringbuytickets.service.CustomerService;
+//import com.example.hwspringbuytickets.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsServiceImpl userDetailsService;
+    private final CustomerService customerService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -27,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Настройка службы для поиска пользователя в базе данных.
         // и установка PasswordEncoder
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(customerService).passwordEncoder(passwordEncoder());
 
     }
 
@@ -37,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();//CORS
 
         // не требуют авторизациии
-        http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/registration").permitAll();
 
         // Страница /userInfo требует входа в систему как ROLE_USER или ROLE_ADMIN.
         // Если нет логина, будет перенаправлен на страницу /login.
@@ -56,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .loginPage("/login")//
             .defaultSuccessUrl("/userInfo")//
             .failureUrl("/login?error=true")//
-            .usernameParameter("username")//
+            .usernameParameter("email")//
             .passwordParameter("password").and()
             // Конфиг для выхода
             .logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");

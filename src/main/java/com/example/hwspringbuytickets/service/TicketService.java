@@ -4,10 +4,10 @@ import com.example.hwspringbuytickets.dto.CustomerDto;
 import com.example.hwspringbuytickets.dto.EventDto;
 import com.example.hwspringbuytickets.dto.TicketDto;
 import com.example.hwspringbuytickets.dto.TicketPackDto;
-import com.example.hwspringbuytickets.model.Customer;
-import com.example.hwspringbuytickets.model.Event;
-import com.example.hwspringbuytickets.model.Ticket;
-import com.example.hwspringbuytickets.model.TicketStatus;
+import com.example.hwspringbuytickets.entity.Customer;
+import com.example.hwspringbuytickets.entity.Event;
+import com.example.hwspringbuytickets.entity.Ticket;
+import com.example.hwspringbuytickets.entity.TicketStatus;
 import com.example.hwspringbuytickets.repository.TicketRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 

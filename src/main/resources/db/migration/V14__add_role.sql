@@ -1,0 +1,10 @@
+-- set
+-- search_path = box;
+--
+--
+-- --create sequence userRole_generator;
+-- --
+-- -- insert into "role"(role_id, role_name)
+-- -- values (1, 'ROLE_USER'), (2, 'ROLE_ADMIN');
+--
+--

@@ -1,7 +1,7 @@
 package com.example.hwspringbuytickets.service;
 
 import com.example.hwspringbuytickets.dto.PlaceDto;
-import com.example.hwspringbuytickets.model.Place;
+import com.example.hwspringbuytickets.entity.Place;
 import com.example.hwspringbuytickets.repository.PlaceRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
