@@ -1,0 +1,85 @@
+.eventView {
+    width: 100%;
+    /*margin: 0 auto;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #245852;
+
+}
+ nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:1.5em 1.5em;
+}
+ .div1{
+    max-width: 28.5em;
+    width: 100%;
+    height: 25.8em;
+    margin: 2em ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+ .div2{
+    max-width: 44.6em;
+    width: 100%;
+    height: 25.8em;
+    margin:2.5em 1.5em 3em;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-radius: 0.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+ h3{
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.5em;
+    line-height: 157%;
+    color: #FFFFFF;
+
+}
+
+ p{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.25em;
+    line-height: 1.5em;
+    color: #FFFFFF;
+    margin-bottom: 1.5em;
+}
+ a{
+    text-decoration:none;
+}
+.buttonLetsGet{
+    padding: 1em 2.5em;
+    text-align: center;
+    width: 12em;
+    height: 3.25em;
+    background: #01996D;
+    border: 1px solid #01996D;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.25em;
+    color: #FFFFFF;
+
+}
+.eventImg{
+    width: 100%;
+    max-width: 30em;
+}

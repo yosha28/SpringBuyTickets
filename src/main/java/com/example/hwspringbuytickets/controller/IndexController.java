@@ -23,6 +23,7 @@ public class IndexController {
 
     @Autowired
     private EventService eventService;
+
     @GetMapping("test")
     public String helloPage(Model model) {
         model.addAttribute("testMsg", "Hello from server");
@@ -35,40 +36,49 @@ public class IndexController {
         model.addAttribute("testPosts", posts);
 
         model.addAttribute("status", Status.BAD.toString());
-     //   model.addAttribute("status", Status.NEW.toString());
+        //   model.addAttribute("status", Status.NEW.toString());
 
         return "test";
     }
+
     @GetMapping("world")
     // == @RequestMapping(value="world",method= RequestMethod.GET)
-    public String worldPage(Model model) {
-        model.addAttribute("testMsg","Hello from world");
-        //  var event=new EventDto();
-        List<TicketPackDto> tickets = new ArrayList<TicketPackDto>();
-        tickets.add(TicketPackDto.builder().cost(100).count(1).build());
-        tickets.add(TicketPackDto.builder().cost(200).count(2).build());
-        createEvent();
+    public String worldPage(Model model) throws java.text.ParseException {
+        model.addAttribute("testMsg", "Hello from world");
 
-        var event=eventService.getFullList().get(0);
-        model.addAttribute("event",event);
-        var events=eventService.getFullList();
-        model.addAttribute("events",events);
+      //  createEvent();
+
+        var events = eventService.getFullList();
+        model.addAttribute("events", events);
 
         return "data/world";
     }
 
-public void createEvent() /*throws java.text.ParseException*/ {
+    public void createEvent() throws java.text.ParseException {
         List<TicketPackDto> tickets = new ArrayList<TicketPackDto>();
         tickets.add(TicketPackDto.builder().cost(100).count(1).build());
         tickets.add(TicketPackDto.builder().cost(200).count(2).build());
 
         EventCreationDto dto = new EventCreationDto();
-      //  dto.setEvent_date(format.parse("2022-12-29"));
-        dto.setName("Event 7");
+        dto.setEvent_date(format.parse("2022-12-29"));
+        dto.setName("Event 1");
         PlaceDto placeDto = PlaceDto.builder().address("str.First").name("ConcertHall 7").build();
         dto.setPlace(placeDto);
         dto.setTicketPack(tickets);
 
         eventService.saveEvent(dto);
+
+        List<TicketPackDto> tickets2 = new ArrayList<TicketPackDto>();
+        tickets2.add(TicketPackDto.builder().cost(100).count(1).build());
+        tickets2.add(TicketPackDto.builder().cost(200).count(2).build());
+
+        EventCreationDto dto2 = new EventCreationDto();
+        dto2.setEvent_date(format.parse("2022-12-30"));
+        dto2.setName("Event 2");
+        PlaceDto placeDto2 = PlaceDto.builder().address("str.Second").name("ConcertHall 2").build();
+        dto2.setPlace(placeDto2);
+        dto2.setTicketPack(tickets2);
+
+        eventService.saveEvent(dto2);
     }
 }

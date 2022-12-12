@@ -1,57 +1,65 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.w3.org/1999/xhtml"
+
       layout:decorate="~{fragments/base}">
 <head>
+    <link th:href="@{/style/registrationPage.css}" rel="stylesheet">
     <title>Registration</title>
 </head>
 <body>
 <div class="divLogin" layout:fragment="content">
-<!-- Include _menu.html -->
-<th:block th:include="/fragments/menuLogin"></th:block>
 
-<h1>Registration</h1>
-<!-- /login?error=true -->
-<!--<div th:if="${#request.getParameter('error') == 'true'}"-->
-<!--     style="color:red;margin:10px 0px;">-->
-<!--    Login Failed!!!<br />-->
-<!--    Reason :-->
-<!--    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"-->
-<!--          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">-->
-<!--                Static summary-->
-<!--         </span>-->
+    <form name='f' th:action="@{/saveRegistration}" th:object="${customer}" method='POST'>
+        <div id="login-box">
+            <div class="left">
 
-<!--</div>-->
+                <h1 class="h1class">Registration</h1>
+                <div class="divInput">
+                    <p class="error-label" ></p>
+                    <input type="text" name="username" th:field="*{name}" placeholder="Username"/>
+                </div>
+                <div class="divInput">
+                    <p class="error-label" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        ERROR</p>
+                    <input type="text" name='email' th:field="*{email}" placeholder="E-mail"/>
+                </div>
+
+                <div class="divInput">
+                    <p class="error-label"></p>
+                    <input type="text" name='phone' th:field="*{phone}" placeholder="Phone"/>
+                </div>
+
+                <div class="divInput">
+                    <p class="error-label" th:if="${#fields.hasErrors('confirmPassword')}"
+                       th:errors="*{confirmPassword}">
+                        ERROR</p>
+                    <input type="password" name="password" th:field="*{encrytedPassword}" placeholder="Password"/>
+                </div>
+
+                <div class="divInput">
+                    <p class="error-label"></p>
+                    <input type="password" name="password2" th:field="*{confirmPassword}"
+                           placeholder="Retype password"/>
+                </div>
 
 
-<form name='f'  th:action="@{/saveRegistration}" th:object="${customer}"  method='POST'>
-    <table>
-        <tr>
-            <td>Name:</td>
-            <td><input type='text' name='username'   th:field="*{name}" value=''></td>
-        </tr>
-        <tr>
-            <td>Mail:</td>
-            <td><input type='email' name='email' th:field="*{email}" /></td>
-        </tr>
-        <tr>
-            <td>Phone:</td>
-            <td><input type='phone' name='phone' th:field="*{phone}" /></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' th:field="*{encrytedPassword}" /></td>
-        </tr>
+                <input type="submit" name="submit" value="Sign me up"/>
+            </div>
 
-        <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-        </tr>
-    </table>
-</form>
+            <div class="right">
+                <span class="loginwith">Sign in with<br/>social network</span>
 
-<br>
-
+                <button class="social-signin facebook">Log in with facebook</button>
+                <button class="social-signin twitter">Log in with Twitter</button>
+                <button class="social-signin google">Log in with Google+</button>
+            </div>
+            <div class="or">OR</div>
+        </div>
+        <br>
+    </form>
 </div>
+
 </body>
 
 </html>

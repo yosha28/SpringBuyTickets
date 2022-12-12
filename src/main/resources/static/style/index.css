@@ -10,12 +10,17 @@ body {
 
 }
 .divLogin{
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
 	text-align: center;
+	background: #55ACEE;
 }
 form{
 
 }
- header nav{
+.header_nav{
  	height: 4.25em;
  	display: flex;
 	flex-direction: row;
@@ -32,7 +37,7 @@ header .div1{
 	background-repeat: no-repeat;
 	background-image: url("../img/logo.png");
 }
-header .div2 {
+.header_div2 {
 	width:41em;
 	height: 1.2em;
 	display: flex;
@@ -46,10 +51,14 @@ header .div2 {
 /*!*	align-items:center;*!*/
 /*	*/
 /*}*/
+
+a{
+	text-decoration: none;
+}
 header a{
 	font-size: 1em;
 	font-family:Lato;
-	text-decoration: none;
+
 	color:#292929;	
 }
  .button-trial{
@@ -456,7 +465,7 @@ li{
 
 
 footer{
-	height:32.7em ;
+	height:25em ;
 	background: #245852;
 }
 
