@@ -24,6 +24,8 @@ public class Customer {
     @Column(length = 128, nullable = false)
     private String encrytedPassword;
 
+//    private String confirmPassword;
+
     @Column(length = 1, nullable = false)
     private boolean enabled;
 

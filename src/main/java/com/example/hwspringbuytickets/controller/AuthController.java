@@ -10,8 +10,10 @@ import com.example.hwspringbuytickets.repository.CustomerRepository;
 import com.example.hwspringbuytickets.repository.RoleRepository;
 import com.example.hwspringbuytickets.repository.UserRoleRepository;
 import com.example.hwspringbuytickets.service.CustomerService;
+import com.example.hwspringbuytickets.service.SecurityService;
 import com.example.hwspringbuytickets.service.UserRoleService;
 import com.example.hwspringbuytickets.utils.WebUtils;
+import com.example.hwspringbuytickets.validation.UserValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -21,9 +23,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
@@ -37,8 +41,9 @@ public class AuthController {
     private CustomerService customerService;
 
     @Autowired
-    private UserRoleService userRoleService;
-
+    private SecurityService securityService;
+    @Autowired
+    private UserValidator userValidator;
 
     @GetMapping(value = {"/welcome"})
     public String welcomePage(Model model) {
@@ -61,12 +66,13 @@ public class AuthController {
     @GetMapping(value = "/login")
     public String loginPage(Model model) {
         return "loginPage";
+
     }
 
     @GetMapping(value = "/registration")
     public String registrationPage(Model model) {
-        Customer customer = new Customer();
-        model.addAttribute("customer", customer);
+        CustomerDto customerDto = new CustomerDto();
+        model.addAttribute("customer", customerDto);
 
         return "registrationPage";
     }
@@ -115,14 +121,17 @@ public class AuthController {
     }
 
     @PostMapping("/saveRegistration")
-    public String saveRegistration(@ModelAttribute("customer") CustomerDto customerDto, Model model) {
-        log.info("go to Registr");
-        //   CustomerDto userDto = new CustomerDto();
+    public String saveRegistration(@ModelAttribute("customer") CustomerDto customerDto,
+                                   BindingResult bindingResult,
+                                   Model model) {
+        userValidator.validate(customerDto,bindingResult);
 
-        //   userDto.setEmail(customerDto.getEmail());
-
+        if(bindingResult.hasErrors()){
+            return "registrationPage";
+        }
         customerDto.setEncrytedPassword(encoder.encode(customerDto.getEncrytedPassword()));
         customerDto.setEnabled(true);
+
 
         if (!customerService.saveCustomer(customerDto)) {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
@@ -130,10 +139,9 @@ public class AuthController {
         }
         //  securityService.autoLogin(customerDto.getEmail(),customerDto.getEncrytedPassword());
         log.info("go to userRoleService");
-
-
-
+//Principal principal= (Principal) customerService.loadUserByUsername(customerDto.getEmail());
         return "loginPage";
+        // return "redirect:welcome";
     }
 
 }

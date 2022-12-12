@@ -29,7 +29,7 @@ public class EventService {
     private final PlaceRepository placeRepository;
     private final PlaceService placeService;
 
-    @Transactional
+  //  @Transactional
     public void saveEvent(EventCreationDto dto) {
         EventDto eventDto = modelMapper.map(dto, EventDto.class);
 

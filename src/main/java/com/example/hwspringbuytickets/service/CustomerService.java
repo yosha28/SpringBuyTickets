@@ -37,15 +37,18 @@ public class CustomerService implements UserDetailsService {
     private  UserRoleService userRoleService;
 
 
-   // @Transactional
+    @Transactional
     public boolean saveCustomer(CustomerDto dto) {
         Customer customer = mapper.map(dto, Customer.class);
         CustomerDto customerBd = getCustomerForEmail(dto.getEmail());
         if (customerBd != null) return false;
         log.info("Save User: " + customer);
         customerRepository.save(customer);
-        customerRepository.flush();
+       // customerRepository.flush();
+        Customer cust = this.customerRepository.findUserAccount(dto.getEmail())
+                .orElseThrow(RuntimeException::new);
 
+        userRoleService.saveUserRole(cust);
         return true;
     }
 
@@ -72,7 +75,7 @@ public class CustomerService implements UserDetailsService {
         Customer customer = this.customerRepository.findUserAccount(userEmail)
                 .orElseThrow(RuntimeException::new);
 
-        userRoleService.saveUserRole(customer);
+    //    userRoleService.saveUserRole(customer);
 
         log.info(" in loadUserBy ");
         if (customer == null) {

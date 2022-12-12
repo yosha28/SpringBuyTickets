@@ -20,6 +20,8 @@ public class CustomerDto {
 
     private String encrytedPassword;
 
+    private String confirmPassword;
+
     private boolean enabled;
 
     private List<TicketDto> tickets;

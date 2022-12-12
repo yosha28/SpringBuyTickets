@@ -4,19 +4,35 @@
       layout:decorate="~{fragments/base}">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/style/normalize.css}" rel="stylesheet">
+    <link th:href="@{/style/index.css}" rel="stylesheet">
+    <link th:href="@{/style/event.css}" rel="stylesheet">
     <title>World page</title>
 </head>
 <body layout:fragment="content" th:inline="text">
-<h1 th:text="${testMsg}"></h1>
-<h4 th:text="#{msg.test.welcome}"></h4>
-<div style="background-color: aquamarine" th:object="${event}">
-    <h3 th:text="*{getName()}"></h3>
-</div>
-<div style="background-color: aquamarine">
+<!--<h1 th:text="${testMsg}"></h1>-->
+<!--<h4 th:text="#{msg.test.welcome}"></h4>-->
+<!--<div style="background-color: aquamarine" th:object="${event}">-->
+<!--    <h3 th:text="*{getName()}"></h3>-->
+
+<!--<div style="background-color: aquamarine">-->
+<div class="wrapper">
     <ul th:each="event,iter:${events}">
-        <li th:text="${iter.count} +'.' + ${event.getName()}"></li>
-        <a>Look at [[${event.getName()}]]</a>
+        <section class="eventView">
+            <nav>
+                <div class="div1">
+                    <h3 th:text="${iter.count} +'.' + ${event.getName()}"></h3>
+                    <p >Look at [[${event.getName()}]] </p>
+                    <a href="#"><span class="buttonLetsGet">Let’s get started</span></a></div>
+                <div class="div2" >
+                    <img class="eventImg" th:src="@{'img/'+(${event.getId()})+'.png'}" >
+                </div>
+            </nav>
+        </section>
+<!--        <li th:text="${iter.count} +'.' + ${event.getName()}"></li>-->
+<!--        <a>Look at [[${event.getName()}]]</a>-->
     </ul>
 </div>
+
 </body>
 </html>

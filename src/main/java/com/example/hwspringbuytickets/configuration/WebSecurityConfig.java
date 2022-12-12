@@ -5,6 +5,7 @@ import com.example.hwspringbuytickets.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -52,9 +53,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
         // Конфиг для формы входа (логин страница)
-        http.authorizeRequests().and().formLogin()
+        http.authorizeRequests()
+                .and().formLogin()
             .loginProcessingUrl("/j_spring_security_check") // Submit URL
-            .loginPage("/login")//
+            .loginPage("/login")
             .defaultSuccessUrl("/userInfo")//
             .failureUrl("/login?error=true")//
             .usernameParameter("email")//
@@ -63,4 +65,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
     }
 
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+        return authenticationManagerBean();
+    }
 }
