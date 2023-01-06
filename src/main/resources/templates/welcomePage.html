@@ -5,15 +5,17 @@
 >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/style/normalize.css}" rel="stylesheet">
-    <link th:href="@{/style/index.css}" rel="stylesheet">
+<!--    <link th:href="@{/style/normalize.css}" rel="stylesheet">-->
+<!--    <link th:href="@{/style/index.css}" rel="stylesheet">-->
     <title th:utext="${title}"></title>
 </head>
 
 <body>
-<div class="divLogin" layout:fragment="content">
-    <th:block th:include="/fragments/menuLogin"></th:block>
-    <h2>Message : <span th:utext="${message}"></span></h2>
+<div class="content" layout:fragment="content">
+    <div class="divLogin">
+        <th:block th:include="/fragments/menuLogin"></th:block>
+        <h2>Message : <span th:utext="${message}"></span></h2>
+    </div>
 </div>
 </body>
 </html>

@@ -28,13 +28,13 @@ import java.util.stream.Collectors;
 @Log4j2
 public class CustomerService implements UserDetailsService {
     @Autowired
-    private  ModelMapper mapper;
+    private ModelMapper mapper;
     @Autowired
-    private  CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
     @Autowired
-    private  UserRoleRepository userRoleRepository;
+    private UserRoleRepository userRoleRepository;
     @Autowired
-    private  UserRoleService userRoleService;
+    private UserRoleService userRoleService;
 
 
     @Transactional
@@ -44,11 +44,15 @@ public class CustomerService implements UserDetailsService {
         if (customerBd != null) return false;
         log.info("Save User: " + customer);
         customerRepository.save(customer);
-       // customerRepository.flush();
+        // customerRepository.flush();
         Customer cust = this.customerRepository.findUserAccount(dto.getEmail())
                 .orElseThrow(RuntimeException::new);
 
-        userRoleService.saveUserRole(cust);
+        String admin1= "maya2882@gmail.com";
+        log.info("EEEEEmail: " + dto.getEmail());
+        if (dto.getEmail().equals(admin1)) userRoleService.saveAdminRole(cust);
+        else userRoleService.saveUserRole(cust);
+
         return true;
     }
 
@@ -75,7 +79,7 @@ public class CustomerService implements UserDetailsService {
         Customer customer = this.customerRepository.findUserAccount(userEmail)
                 .orElseThrow(RuntimeException::new);
 
-    //    userRoleService.saveUserRole(customer);
+        //    userRoleService.saveUserRole(customer);
 
         log.info(" in loadUserBy ");
         if (customer == null) {

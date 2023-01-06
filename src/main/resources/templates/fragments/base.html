@@ -6,19 +6,19 @@
 <link th:href="@{/style/normalize.css}" rel="stylesheet">
 <link th:href="@{/style/index.css}" rel="stylesheet">
 <head>
-    <link rel="shortcut icon" href="https://logbook.itstep.org/favicon.ico?v=2">
 
 </head>
 <body>
+
+<div class="body_wrapper">
 <header>
     <nav  th:insert="fragments/menu :: menu">
     </nav>
 </header>
-<!--<div class="main_menu_block">-->
+
     <main>
         <div layout:fragment="content"></div>
     </main>
-<!--</div>-->
 <footer>
     <div class="wrapper">
         <nav>
@@ -27,11 +27,11 @@
                 <a href="#">Why Alivio</a>
                 <a href="#">Solution</a>
                 <a href="#">Community</a>
-                <a href="#">Pricing</a>
+                <a th:href="@{/admin}">Update event</a>
             </div>
         </nav>
     </div>
 </footer>
-
+</div>
 </body>
 </html>

@@ -51,7 +51,7 @@ public class IndexController {
         var events = eventService.getFullList();
         model.addAttribute("events", events);
 
-        return "data/world";
+        return "data/event";
     }
 
     public void createEvent() throws java.text.ParseException {

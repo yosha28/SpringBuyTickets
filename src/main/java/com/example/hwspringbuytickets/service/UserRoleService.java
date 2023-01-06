@@ -32,5 +32,16 @@ public class UserRoleService {
         userRoleRepository.save(userRole);
 
     }
+    public void saveAdminRole(Customer customer) {
+
+        UserRole userRole = new UserRole();
+        userRole.setCustomer(customer);
+
+        //   roleService.createRole();
+
+        userRole.setRole(roleRepository.findRole("ROLE_ADMIN"));
+        userRoleRepository.save(userRole);
+
+    }
 
 }

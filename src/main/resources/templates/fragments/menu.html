@@ -1,17 +1,19 @@
-<div class="wrapper" th:fragment="menu" xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="wrapper" th:fragment="menu"  xmlns:th="http://www.thymeleaf.org">
     <nav class="header_nav">
-        <div class="div1"></div>
+        <div class="header_div1"></div>
         <div class="header_div2">
             <a th:href="@{/}">Why Alivio</a>
-            <a href="#">Solution</a>
-            <a href="#">Community</a>
-            <a th:href="@{/world}">WorldPage</a>
-            <a th:if="${#request.userPrincipal == null}" th:href="@{/welcome}">Sign in</a>
-            <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
-            <a href="#"><span class="button-trial">Start Trial</span></a>
+            <a th:href="@{/welcome}">Solution</a>
+            <a th:href="@{/world}">All events</a>
+            <a  th:if="${#request.userPrincipal != null}" href="#" >My tickets</a>
         </div>
-        <!--            <div class="div3">-->
-        <!--               -->
-        <!--            </div>-->
+            <div class="header_div3">
+                <a  th:if="${#request.userPrincipal != null}" th:href="@{/logout}"><span class="button-trial">Log out</span></a>
+                <a  th:if="${#request.userPrincipal == null}" th:href="@{/login}"><span class="button-trial">Log in</span></a>
+                <a th:if="${#request.userPrincipal == null}" th:href="@{/registration}"><span class="button-trial">Sign up</span></a>
+            </div>
+
+
+
     </nav>
 </div>
