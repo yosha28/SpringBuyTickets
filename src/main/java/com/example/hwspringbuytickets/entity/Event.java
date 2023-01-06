@@ -3,6 +3,7 @@ package com.example.hwspringbuytickets.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.Date;
 import java.util.List;
 
@@ -16,15 +17,14 @@ public class Event {
     @SequenceGenerator(name = "event_generator_seq", sequenceName = "box.event_generator")
     private Long id;
     @Column
-    private String  name;
+    private String name;
     @Column
     private Date date;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy= "event",cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "event", cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "place_id")
     private Place place;
-
 }

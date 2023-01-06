@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.bluhbluh.com/"
+      layout:decorate="~{fragments/base}">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style/normalize.css}" rel="stylesheet">
+    <link th:href="@{/style/index.css}" rel="stylesheet">
+    <link th:href="@{/style/event.css}" rel="stylesheet">
+    <title>World page</title>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+
+    <div class="wrapper">
+        <ul th:each="event,iter:${events}">
+            <section class="eventView">
+                <nav class="eventNav">
+                    <div class="eventDiv1">
+                        <h3 th:text="${iter.count} +'.' + ${event.getName()}"></h3>
+                        <p >Look at [[${event.getName()}]] </p>
+                        <a href="#"><span class="buttonLetsGet">Buy ticket</span></a></div>
+                    <div class="div2" >
+                        <img class="eventImg" th:src="@{'img/'+(${event.getId()})+'.png'}" >
+                    </div>
+                </nav>
+            </section>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
